@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="url" translatable="false">https://updates2.aicp-rom.com/update.php?device=</string>
-    <string name="url_legacy" translatable="false">https://legacy.aicp-rom.com/update.php?device=</string>
-    <string name="url_download" translatable="false">https://dwnld.aicp-rom.com/</string>
+    <string name="url" translatable="false">http://heimdal/update.php?device=</string>
+    <string name="url_legacy" translatable="false">http://heimdal/update.php?device=</string>
+    <string name="url_download" translatable="false">http://heimdal/builds/</string>
 </resources>
