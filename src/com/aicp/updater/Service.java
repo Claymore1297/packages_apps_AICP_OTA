@@ -179,22 +179,31 @@ public class Service extends IntentService {
             String streamingPropertyFiles[] = null;
             long timestamp = 0;
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)))) {
-                for (String line; (line = reader.readLine()) != null; ) {
+                String line;
+                while ((line = reader.readLine()) != null) {
                     final String[] pair = line.split("=");
-                    if ("post-timestamp".equals(pair[0])) {
-                        timestamp = Long.parseLong(pair[1]);
-                    } else if ("serialno".equals(pair[0])) {
-                        serialno = pair[1];
-                    } else if ("pre-device".equals(pair[0])) {
-                        device = pair[1];
-                    } else if ("ota-type".equals(pair[0])) {
-                        type = pair[1];
-                    } else if ("ota-streaming-property-files".equals(pair[0])) {
-                        streamingPropertyFiles = pair[1].trim().split(",");
-                    } else if ("pre-build-incremental".equals(pair[0])) {
-                        sourceIncremental = pair[1];
-                    } else if ("pre-build".equals(pair[0])) {
-                        sourceFingerprint = pair[1];
+                    switch (pair[0]) {
+                        case "ota-streaming-property-files":
+                            streamingPropertyFiles = pair[1].trim().split(",");
+                            break;
+                        case "ota-type":
+                            type = pair[1];
+                            break;
+                        case "post-timestamp":
+                            timestamp = Long.parseLong(pair[1]);
+                            break;
+                        case "pre-build":
+                            sourceFingerprint = pair[1];
+                            break;
+                        case "pre-build-incremental":
+                            sourceIncremental = pair[1];
+                            break;
+                        case "pre-device":
+                            device = pair[1];
+                            break;
+                        case "serialno":
+                            serialno = pair[1];
+                            break;
                     }
                 }
             }
