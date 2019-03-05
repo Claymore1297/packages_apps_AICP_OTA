@@ -464,6 +464,8 @@ public class Service extends IntentService {
                   writer = new BufferedWriter(new OutputStreamWriter(
                   new FileOutputStream("/cache/recovery/openrecoveryscript"), "utf-8"));
                   writer.write("install @/cache/recovery/block.map");
+                  writer.write("\n");
+                  writer.write("install /storage/emulated/0/aicp_ota/TWRP.zip");
                } catch (IOException ex) {
 	          Log.e(TAG, "failed to write openrecoveryscript", ex);
                } finally {
